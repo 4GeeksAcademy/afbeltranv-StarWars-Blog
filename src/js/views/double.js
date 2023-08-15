@@ -9,6 +9,7 @@ export const Double = props => {
 
 
 	const [planet, setPlanet]=useState({}); 
+	const [planetId, setPlanetId]=useState({}); 
 
 
 	function getPlanet(){
@@ -17,9 +18,16 @@ export const Double = props => {
 		// .then((data)=>console.log(data.result))
 		.then((data)=>setPlanet(data.result.properties));
 	}
+	function getPlanetid(){
+		fetch('https://www.swapi.tech/api/planets/'+params.theid)
+		.then((response)=>response.json())
+		// .then((data)=>console.log(data.result))
+		.then((data)=>setPlanetId(data.result));
+	}
 
 	useEffect(()=>{	
 		getPlanet();
+		getPlanetid();
 
 	}, [])
 
@@ -27,6 +35,7 @@ export const Double = props => {
 	return (
 		<div className="jumbotron">
 			<h1 className="display-4"> {planet.name} </h1>
+			<img src={"https://starwars-visualguide.com/assets/img/planets/"+planetId.uid+".jpg"} className="card-img-top Photo" alt="..."/>
             <span>Population: {planet.population + " "}</span>
 			<span>Climate: {planet.climate+ " "}</span>
 			<span>Terrain: {planet.terrain+ " "}</span>

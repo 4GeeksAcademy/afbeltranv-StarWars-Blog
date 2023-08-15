@@ -8,6 +8,7 @@ export const Single = props => {
 	const params = useParams();
 
 	const [character, setCharacter]=useState({}); 
+	const [characterId, setCharacterId]=useState({}); 
 
 
 
@@ -17,10 +18,18 @@ export const Single = props => {
 		// .then((data)=>console.log(data.result.properties))
 		.then((data)=>setCharacter(data.result.properties));
 	}
+
+	function getCharacterId(){
+		fetch('https://www.swapi.tech/api/people/'+params.theid)
+		.then((response)=>response.json())
+		// .then((data)=>console.log(data.result))
+		.then((data)=>setCharacterId(data.result));
+	}
 	
 
 	useEffect(()=>{
-		getCharacter();			
+		getCharacter();	
+		getCharacterId();		
 
 	}, [])
 
@@ -28,6 +37,7 @@ export const Single = props => {
 	return (
 		<div className="jumbotron">
 			<h1 className="display-4">{character.name} </h1>
+			 <img src={"https://starwars-visualguide.com/assets/img/characters/"+characterId.uid+".jpg"} className="card-img-top Photo" alt="..."/>
 			<span>Gender: {character.gender + " "}</span>
 			<span>Height: {character.height+ " "}</span>
 			<span>Hair Color: {character.hair_color+ " "}</span>
