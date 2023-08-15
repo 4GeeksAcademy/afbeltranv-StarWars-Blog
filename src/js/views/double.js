@@ -26,7 +26,14 @@ export const Double = props => {
 
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element:{planet.name}  </h1>
+			<h1 className="display-4"> {planet.name} </h1>
+            <span>Population: {planet.population + " "}</span>
+			<span>Climate: {planet.climate+ " "}</span>
+			<span>Terrain: {planet.terrain+ " "}</span>
+			<span>Gravity: {planet.gravity+ " "}</span>
+			<span>Climate: {planet.climate+ " "}</span>
+			<span>Diameter: {planet.diameter+ " "}</span>
+      		
 
 			<hr className="my-4" />
 

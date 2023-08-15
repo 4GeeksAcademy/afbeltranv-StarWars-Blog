@@ -1,7 +1,13 @@
-import React from "react";
+import React , {useEffect, useState, useContext} from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 
 export const Navbar = () => {
+
+	const {store, actions}=useContext(Context)
+	console.log("Contexto desde navbar")
+	
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
@@ -10,12 +16,11 @@ export const Navbar = () => {
 			<div className="ml-auto">				
 				<div className="dropdown">
 					<button className="btn btn-secondary dropdown-toggle Favourites" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Dropdown button
+						Favs {store.favs.length}
 					</button>
 						<ul className="dropdown-menu">
-							<li><a className="dropdown-item" href="#">Action</a></li>
-							<li><a className="dropdown-item" href="#">Another action</a></li>
-							<li><a className="dropdown-item" href="#">Something else here</a></li>
+							{store.favs.map((fav)=><li><a className="dropdown-item" href="#" key={fav}> {fav} </a> <button onClick={()=>actions.removeFav(fav)}> Delete </button></li>)}
+							
 						</ul>
 				</div>
 				

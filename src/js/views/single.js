@@ -27,7 +27,14 @@ export const Single = props => {
 
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element:{character.name} </h1>
+			<h1 className="display-4">{character.name} </h1>
+			<span>Gender: {character.gender + " "}</span>
+			<span>Height: {character.height+ " "}</span>
+			<span>Hair Color: {character.hair_color+ " "}</span>
+			<span>Skin Color: {character.skin_color+ " "}</span>
+			<span>Eye Color: {character.eye_color+ " "}</span>
+			<span>Birth Year: {character.birth_year+ " "}</span>		
+			
 
 			<hr className="my-4" />
 
