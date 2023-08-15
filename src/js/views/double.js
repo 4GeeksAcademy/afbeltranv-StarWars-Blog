@@ -3,31 +3,30 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = props => {
+export const Double = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 
-	const [character, setCharacter]=useState({}); 
+
+	const [planet, setPlanet]=useState({}); 
 
 
-
-	function getCharacter(){
-		fetch('https://www.swapi.tech/api/people/'+params.theid)
+	function getPlanet(){
+		fetch('https://www.swapi.tech/api/planets/'+params.theid)
 		.then((response)=>response.json())
-		// .then((data)=>console.log(data.result.properties))
-		.then((data)=>setCharacter(data.result.properties));
+		// .then((data)=>console.log(data.result))
+		.then((data)=>setPlanet(data.result.properties));
 	}
-	
 
-	useEffect(()=>{
-		getCharacter();			
+	useEffect(()=>{	
+		getPlanet();
 
 	}, [])
 
 
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element:{character.name} </h1>
+			<h1 className="display-4">This will show the demo element:{planet.name}  </h1>
 
 			<hr className="my-4" />
 
@@ -40,6 +39,6 @@ export const Single = props => {
 	);
 };
 
-Single.propTypes = {
+Double.propTypes = {
 	match: PropTypes.object
 };

@@ -1,0 +1,16 @@
+.StarWarsLogo{
+    margin-left: 20px;
+}
+.Favourites{
+    margin-right: 20px;
+}
+.Logo{
+    height:100px;
+    width:100px;
+}
+.carrusel{    
+    display: inline-block;
+    overflow-x: auto;    
+    white-space: nowrap;
+    width:100%;
+}
